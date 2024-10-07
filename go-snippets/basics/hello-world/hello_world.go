@@ -38,8 +38,14 @@ func greetingPrefix(language string) (prefix string) {
 func main() {
 	// argsWithProgramPath := os.Args
 	args := os.Args[1:]
-	name := args[0]
-	language := args[1]
+
+	name := ""
+	language := ""
+
+	if len(args) == 2 {
+		name = args[0]
+		language = args[1]
+	}
 
 	fmt.Println(GetHello(name, language))
 }
