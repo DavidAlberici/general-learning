@@ -1,6 +1,7 @@
 package pointers
 
 import (
+	asserts "hello-world"
 	"testing"
 )
 
@@ -21,7 +22,7 @@ func TestWallet(t *testing.T) {
 		expected := Bitcoin(8)
 
 		assertBalance(wallet, expected, t)
-		assertNoError(err, t)
+		asserts.AssertNoError(err, t)
 	})
 
 	t.Run("withdraw insufficient funds", func(t *testing.T) {
@@ -31,15 +32,8 @@ func TestWallet(t *testing.T) {
 		expectedError := wallet.Withdraw(Bitcoin(20))
 
 		assertBalance(wallet, startingBalance, t)
-		assertError(expectedError, ErrorInsufficientFunds, t)
+		asserts.AssertErrorEquals(expectedError, ErrorInsufficientFunds, t)
 	})
-}
-
-func assertNoError(err error, t *testing.T) {
-	t.Helper()
-	if err != nil {
-		t.Errorf("did not want an error but got one: %q", err)
-	}
 }
 
 func assertBalance(wallet Wallet, expected Bitcoin, t testing.TB) {
@@ -51,15 +45,5 @@ func assertBitcoinEquals(actual, expected Bitcoin, t testing.TB) {
 	t.Helper()
 	if actual != expected {
 		t.Errorf("expected %s but got %s", expected, actual)
-	}
-}
-
-func assertError(actualError, expectedError error, t testing.TB) {
-	t.Helper()
-	if actualError == nil {
-		t.Fatal("wanted an error but didn't get one")
-	}
-	if actualError != expectedError {
-		t.Errorf("expected %q but got %q", expectedError, actualError)
 	}
 }
