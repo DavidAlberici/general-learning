@@ -2,6 +2,7 @@ package asserts
 
 import (
 	"math"
+	"slices"
 	"testing"
 )
 
@@ -41,5 +42,12 @@ func AssertNoError(err error, t *testing.T) {
 	t.Helper()
 	if err != nil {
 		t.Errorf("did not want an error but got one: %q", err)
+	}
+}
+
+func AssertStringArraysEqual(actual, expected []string, t testing.TB) {
+	t.Helper()
+	if !slices.Equal(actual, expected) {
+		t.Errorf("expected %v but got %v", expected, actual)
 	}
 }
