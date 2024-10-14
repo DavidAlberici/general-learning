@@ -31,7 +31,7 @@ func TestCheckWebsites(t *testing.T) {
 }
 
 func slowStubWebsiteChecker(_ string) bool {
-	time.Sleep(2 * time.Millisecond)
+	time.Sleep(20 * time.Millisecond)
 	return true
 }
 
