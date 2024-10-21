@@ -33,7 +33,7 @@ func AssertErrorEquals(actualError, expectedError error, t testing.TB) {
 	if actualError == nil {
 		t.Fatal("wanted an error but didn't get one")
 	}
-	if actualError != expectedError {
+	if actualError.Error() != expectedError.Error() {
 		t.Errorf("expected %q but got %q", expectedError, actualError)
 	}
 }
