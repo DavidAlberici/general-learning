@@ -14,4 +14,4 @@
 
 ## Sync package
 - WaitGroup lets you add X go routines, and wait for ALL of them to finish before unblocking
-- A Mutex is a mutual exclusion lock. The zero value for a Mutex is an unlocked mutex.
+- A Mutex is a mutual exclusion lock. The zero value for a Mutex is an unlocked mutex. (see 8c39f5417dcf6bfacef1001e79810ffaab6ee9cc)
