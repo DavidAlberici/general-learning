@@ -19,3 +19,6 @@
 ## Context
 - "Context" is useful to "propagate a cancellation", if you have 10 functions that can be cancelled by different reasons, you do not want to manually "bubble up" the cancel.
 - Nonetheless, maybe you do not need to "react to a cancellation" in all 10 functions, but lets say that in 5 of them you just pass around the context object
+
+## Property based tests
+- Remember the example with roman numerals conversion. The test was not about testing "12 becomes XII", but that converting an arabic to roman, and then back to arabic should return the same input number. For that, Go has built in functions that execute a test function using random values of int (or other primitives I suppose)
